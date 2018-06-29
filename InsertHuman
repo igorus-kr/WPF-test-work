@@ -1,0 +1,20 @@
+USE [NoteDB]
+GO
+/****** Object:  StoredProcedure [dbo].[sp_InsertHuman]    Script Date: 29.06.2018 19:49:04 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+ALTER PROCEDURE [dbo].[sp_InsertHuman]
+    @LastName nvarchar(50),
+    @FirstName nvarchar(50),
+    @SecondName nvarchar(50),
+	@BirthDate nvarchar(50),
+	@PhoneNumber nvarchar(50),
+	@Email nvarchar(50),
+    @Id int out
+AS
+    INSERT INTO People(LastName, FirstName, SecondName, BirthDate, PhoneNumber, Email)
+    VALUES (@LastName, @FirstName, @SecondName, @BirthDate, @PhoneNumber, @Email)
+   
+    SET @Id=SCOPE_IDENTITY()
